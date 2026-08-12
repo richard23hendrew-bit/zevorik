@@ -1,0 +1,126 @@
+FASE 4 — TRANSFORMAR O PHARBEACON EM PWA INSTALÁVEL
+
+A Fase 3 foi concluída e o motor foi validado.
+
+Agora quero preparar o PHARBEACON para instalação em dispositivos móveis.
+
+IMPORTANTE:
+
+NÃO alterar o motor de diagnóstico.
+
+NÃO alterar as regras de análise.
+
+NÃO alterar as perguntas.
+
+NÃO alterar a identidade visual sem necessidade.
+
+NÃO usar serviços pagos.
+
+NÃO criar APK ainda.
+
+NÃO configurar Android/Capacitor ainda.
+
+OBJETIVO:
+
+Transformar a aplicação web atual em um PWA instalável e funcional.
+
+REQUISITOS:
+
+1. Criar manifest.webmanifest válido.
+
+Nome:
+PHARBEACON
+
+Nome curto:
+PHARBEACON
+
+Descrição:
+"Enxergue sua empresa por outro ângulo."
+
+Definir orientação apropriada para aplicativo mobile.
+
+Definir display como standalone.
+
+Definir tema visual coerente com a identidade dark tech.
+
+2. Criar os ícones necessários para PWA.
+
+Usar a identidade visual do farol futurista já existente.
+
+Preparar tamanhos adequados para Android.
+
+3. Criar service worker corretamente.
+
+O aplicativo deve conseguir carregar sua estrutura principal mesmo sem conexão depois de instalado, sempre que tecnicamente possível.
+
+Não criar cache excessivamente agressivo que impeça atualizações futuras.
+
+4. Configurar instalação.
+
+O usuário deve conseguir instalar o PHARBEACON na tela inicial do Android.
+
+5. Criar splash/loading visual coerente com a identidade do PHARBEACON.
+
+6. Garantir funcionamento mobile.
+
+Testar:
+
+- Chrome Android;
+- viewport de celular;
+- orientação vertical;
+- toque;
+- navegação;
+- teclado nas perguntas abertas.
+
+7. Garantir que o aplicativo continue funcionando normalmente no navegador.
+
+8. Não quebrar:
+
+- INTRO
+- QUIZ
+- LOADING
+- RESULTADO
+- motor
+- respostas abertas
+- análise
+- próximos passos
+
+9. Executar:
+
+typecheck
+
+build
+
+testes
+
+preview
+
+10. Validar:
+
+- manifest;
+- ícones;
+- service worker;
+- instalação;
+- carregamento;
+- funcionamento offline básico;
+- ausência de erros no console.
+
+IMPORTANTE:
+
+Se alguma configuração específica não puder ser concluída no ambiente atual, NÃO invente que foi concluída.
+
+Informe exatamente o que foi possível fazer e o que ficou pendente.
+
+NÃO gerar APK nesta fase.
+
+Ao finalizar, informe:
+
+PWA PRONTO
+
+ou
+
+PWA PRECISA DE AJUSTES
+
+e liste exatamente o que foi implementado.
+
+Depois disso vamos preparar a etapa Android/APK.

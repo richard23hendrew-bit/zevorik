@@ -1,3 +1,19 @@
 <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+  <defs>
+    <linearGradient id="bg" x1="24" y1="18" x2="160" y2="166" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101C31"/>
+      <stop offset="1" stop-color="#060B15"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="91" y1="44" x2="91" y2="136" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#48D6FF"/>
+      <stop offset="1" stop-color="#35C7B7"/>
+    </linearGradient>
+  </defs>
+  <rect width="180" height="180" rx="42" fill="url(#bg)"/>
+  <circle cx="90" cy="78" r="27" stroke="#48D6FF" stroke-opacity=".2" stroke-width="2"/>
+  <circle cx="90" cy="78" r="14" fill="#08111F" stroke="#48D6FF" stroke-width="4"/>
+  <circle cx="90" cy="78" r="5" fill="#48D6FF"/>
+  <path d="M90 105V139M71 139H109" stroke="url(#beam)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M90 54V34M90 34L81 43M90 34L99 43" stroke="#48D6FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M40 78H57M123 78H140" stroke="#48D6FF" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
 </svg>
