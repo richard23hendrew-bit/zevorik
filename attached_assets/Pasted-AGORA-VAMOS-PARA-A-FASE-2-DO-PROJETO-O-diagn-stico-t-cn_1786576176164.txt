@@ -1,0 +1,652 @@
+AGORA VAMOS PARA A FASE 2 DO PROJETO.
+
+O diagnóstico técnico da fase anterior foi concluído com sucesso.
+
+O projeto está saudável:
+- typecheck funcionando;
+- servidor funcionando;
+- API funcionando;
+- preview funcionando;
+- sem erros bloqueadores.
+
+NÃO REFAÇA A INFRAESTRUTURA.
+
+NÃO APAGUE O QUE JÁ ESTÁ FUNCIONANDO.
+
+AGORA CONSTRUA A PRIMEIRA VERSÃO REAL E USÁVEL DO PHARBEACON.
+
+IMPORTANTE:
+
+AINDA NÃO GERE APK.
+
+AINDA NÃO CONFIGURE ANDROID.
+
+AINDA NÃO USE SERVIÇOS PAGOS.
+
+O objetivo desta etapa é construir o aplicativo web completo e funcional que posteriormente será transformado em PWA e APK.
+
+==================================================
+PRODUTO
+==================================================
+
+Nome:
+
+PHARBEACON
+
+Slogan:
+
+"Enxergue sua empresa por outro ângulo."
+
+O PHARBEACON é uma ferramenta de diagnóstico empresarial para pequenos empresários.
+
+O usuário responde perguntas simples.
+
+O sistema analisa as respostas.
+
+Depois apresenta uma visão simples, visual e prática da empresa.
+
+O usuário NÃO deve visualizar:
+- score;
+- pesos;
+- fórmulas;
+- algoritmo;
+- matemática interna.
+
+==================================================
+TELAS
+==================================================
+
+Criar quatro estados principais:
+
+INTRO
+QUIZ
+LOADING
+RESULTADO
+
+==================================================
+1. INTRO
+==================================================
+
+Criar uma tela inicial profissional e futurista.
+
+Visual:
+
+DARK TECH.
+
+Fundo escuro.
+
+Logo principal representando um FAROL/BEACON futurista.
+
+Nome:
+
+PHARBEACON
+
+Slogan:
+
+"Enxergue sua empresa por outro ângulo."
+
+Texto:
+
+"Responda algumas perguntas simples e descubra onde sua empresa está forte, onde precisa de atenção e qual pode ser seu próximo passo."
+
+Criar três cards:
+
+DIAGNÓSTICO
+"Perguntas simples."
+
+VISÃO
+"Uma leitura diferente da sua empresa."
+
+AÇÃO
+"Próximos passos práticos."
+
+Botão:
+
+COMEÇAR DIAGNÓSTICO
+
+==================================================
+2. QUIZ
+==================================================
+
+Criar 16 perguntas.
+
+Uma pergunta por tela.
+
+Mostrar:
+
+"Pergunta X de 16"
+
+Mostrar barra de progresso.
+
+Permitir:
+
+Voltar.
+
+Continuar.
+
+Selecionar respostas.
+
+Responder perguntas abertas.
+
+O botão Continuar deve permanecer desabilitado quando não houver resposta.
+
+Na última pergunta:
+
+"VER MEU DIAGNÓSTICO"
+
+As respostas precisam ser mantidas durante todo o questionário.
+
+==================================================
+PERGUNTAS
+==================================================
+
+1.
+Qual é o principal produto ou serviço da sua empresa?
+
+Resposta aberta.
+
+2.
+Há quanto tempo sua empresa existe?
+
+- Menos de 1 ano
+- 1 a 3 anos
+- 3 a 5 anos
+- Mais de 5 anos
+
+3.
+Quantas pessoas trabalham na empresa?
+
+- Apenas eu
+- 2 a 5
+- 6 a 10
+- 11 a 20
+- Mais de 20
+
+4.
+Qual é aproximadamente o faturamento mensal?
+
+- Até R$10 mil
+- R$10 mil a R$30 mil
+- R$30 mil a R$50 mil
+- R$50 mil a R$100 mil
+- Acima de R$100 mil
+- Prefiro não informar
+
+5.
+O dinheiro que entra normalmente é suficiente para pagar todas as despesas?
+
+- Sim, e sobra
+- Sim, mas sobra pouco
+- Às vezes
+- Não
+
+6.
+Você sabe quanto realmente sobra para a empresa no final do mês?
+
+- Sim
+- Tenho uma ideia
+- Não
+
+7.
+Comparando com 6 meses atrás, seus custos estão:
+
+- Muito maiores
+- Um pouco maiores
+- Praticamente iguais
+- Menores
+- Não sei
+
+8.
+Como estão suas vendas atualmente?
+
+- Crescendo
+- Estáveis
+- Caindo
+- Não sei
+
+9.
+De onde vêm principalmente seus clientes?
+
+- Indicação
+- Instagram / Redes sociais
+- Google / Internet
+- Loja física
+- Prospecção ativa
+- Outros
+
+10.
+Você acredita que poderia vender mais usando a estrutura que já possui?
+
+- Sim
+- Talvez
+- Não
+- Não sei
+
+11.
+Qual é hoje o maior problema da sua empresa?
+
+Resposta aberta.
+
+12.
+Existe alguma atividade que consome muito tempo ou dinheiro e poderia ser feita de forma mais eficiente?
+
+- Sim
+- Não
+- Não sei
+
+13.
+Onde você acredita que sua empresa mais perde dinheiro atualmente?
+
+Resposta aberta.
+
+14.
+Sua empresa possui metas claras?
+
+- Sim
+- Algumas
+- Não
+
+15.
+Com que frequência você acompanha os principais números da empresa?
+
+- Todos os dias
+- Toda semana
+- Todo mês
+- Raramente
+- Nunca
+
+16.
+Se você pudesse resolver APENAS UM problema da sua empresa hoje, qual seria?
+
+Resposta aberta.
+
+==================================================
+DESIGN
+==================================================
+
+Criar uma experiência mobile-first.
+
+O aplicativo deve parecer um produto real.
+
+Não parecer um formulário genérico.
+
+Estética:
+
+DARK TECH
+FUTURISTA
+PREMIUM
+MINIMALISTA.
+
+Cores:
+
+AZUL = DESTAQUE
+
+VERDE = FORTE
+
+AMARELO = ATENÇÃO
+
+LARANJA = ALERTA
+
+VERMELHO = CRÍTICO.
+
+Não usar "A INVESTIGAR".
+
+Não usar emojis na interface.
+
+Utilizar ícones modernos.
+
+Cards arredondados.
+
+Bordas discretas.
+
+Gradientes sutis.
+
+Animações leves.
+
+Boa hierarquia visual.
+
+==================================================
+NAVEGAÇÃO
+==================================================
+
+Fluxo:
+
+INTRO
+↓
+QUIZ
+↓
+LOADING
+↓
+RESULTADO
+
+O usuário deve conseguir voltar durante o questionário.
+
+Ao finalizar o diagnóstico:
+
+mostrar loading de aproximadamente 2 segundos.
+
+Texto:
+
+"Analisando sua empresa..."
+
+Subtexto:
+
+"Cruzando suas respostas para encontrar os sinais mais importantes."
+
+==================================================
+ARQUITETURA
+==================================================
+
+Separar:
+
+UI
+
+QUESTÕES
+
+ESTADO DO QUIZ
+
+MOTOR DE ANÁLISE
+
+RESULTADO.
+
+Não colocar toda a lógica em um único componente.
+
+Criar funções reutilizáveis.
+
+Manter o motor independente da interface.
+
+==================================================
+RESULTADO TEMPORÁRIO
+==================================================
+
+Nesta fase, criar a estrutura completa da tela de resultado.
+
+Ela deverá conter:
+
+VISÃO GERAL
+
+PRINCIPAL PRIORIDADE
+
+O QUE SUA EMPRESA ESTÁ FAZENDO BEM
+
+SEU PRÓXIMO PASSO.
+
+O resultado deve ser alimentado pelas respostas reais.
+
+Não criar resultado completamente estático.
+
+==================================================
+PRIMEIRO MOTOR
+==================================================
+
+Implementar nesta fase as regras básicas:
+
+Q5:
+
+"Sim, e sobra"
+→ destaque
+→ FLUXO DE CAIXA
+
+"Sim, mas sobra pouco"
+→ atenção
+
+"Às vezes"
+→ alerta
+
+"Não"
+→ crítico
+
+Q6:
+
+"Sim"
+→ destaque
+→ CONTROLE FINANCEIRO
+
+"Tenho uma ideia"
+→ atenção
+
+"Não"
+→ alerta
+
+Q7:
+
+"Muito maiores"
+→ alerta
+→ CUSTOS
+
+"Um pouco maiores"
+→ atenção
+
+"Praticamente iguais"
+→ forte
+
+"Menores"
+→ destaque
+
+"Não sei"
+→ atenção
+
+Q8:
+
+"Crescendo"
+→ destaque
+→ VENDAS
+
+"Estáveis"
+→ forte
+
+"Caindo"
+→ crítico
+
+"Não sei"
+→ atenção
+
+Q9:
+
+"Indicação"
+→ atenção
+→ ORIGEM DE CLIENTES
+
+"Prospecção ativa"
+→ forte
+
+Q10:
+
+"Sim"
+→ atenção
+→ CAPACIDADE OCIOSA
+
+"Talvez"
+→ atenção
+
+"Não sei"
+→ atenção
+
+Q12:
+
+"Sim"
+→ alerta
+→ EFICIÊNCIA
+
+"Não"
+→ forte
+
+"Não sei"
+→ atenção
+
+Q14:
+
+"Sim"
+→ destaque
+→ METAS
+
+"Algumas"
+→ atenção
+
+"Não"
+→ alerta
+
+Q15:
+
+"Todos os dias"
+→ destaque
+
+"Toda semana"
+→ destaque
+
+"Todo mês"
+→ atenção
+
+"Raramente"
+→ alerta
+
+"Nunca"
+→ crítico
+
+==================================================
+PERGUNTAS ABERTAS
+==================================================
+
+Analisar Q11, Q13 e Q16.
+
+Normalizar texto:
+
+- minúsculas;
+- remover acentos;
+- identificar palavras-chave.
+
+Categorias:
+
+CLIENTES:
+cliente, público, movimento, captação
+
+VENDAS:
+venda, vender, faturamento, receita, pedido
+
+CUSTOS:
+custo, despesa, caro, gasto, conta, juros, dívida, aluguel, imposto
+
+FINANCEIRO:
+dinheiro, caixa, lucro, margem, capital, inadimplência
+
+EQUIPE:
+funcionário, equipe, colaborador, mão de obra
+
+OPERAÇÃO:
+desperdício, retrabalho, processo, demora, lento, produtividade
+
+ESTOQUE:
+estoque, fornecedor, compra, logística, entrega
+
+GESTÃO:
+controle, gestão, meta, planejamento, indicador, sistema, planilha
+
+MARKETING:
+marketing, divulgação, anúncio, instagram, redes sociais, tráfego
+
+ORGANIZAÇÃO:
+organização, organiza, desorganização, bagunça, rotina, prioridade
+
+Quando o empresário mencionar espontaneamente um problema:
+
+marcar esse sinal como DECLARADO.
+
+==================================================
+RESULTADO
+==================================================
+
+Mostrar no máximo três prioridades.
+
+Exemplo:
+
+SUA PRINCIPAL PRIORIDADE
+
+CUSTOS
+FINANCEIRO
+
+Texto curto explicando por que isso apareceu.
+
+Nunca mostrar score.
+
+Nunca mostrar fórmula.
+
+Nunca mostrar pesos.
+
+==================================================
+PRÓXIMO PASSO
+==================================================
+
+Criar recomendações simples.
+
+CUSTOS:
+
+1. Liste seus três maiores custos.
+2. Compare com o faturamento.
+3. Identifique onde existe espaço para redução.
+
+CLIENTES:
+
+1. Liste a origem dos últimos 10 clientes.
+2. Veja se depende muito de uma única fonte.
+3. Trabalhe um segundo canal.
+
+VENDAS:
+
+1. Observe as vendas das últimas quatro semanas.
+2. Identifique o que mudou.
+3. Defina uma meta.
+
+FINANCEIRO:
+
+1. Liste entradas e saídas.
+2. Separe custos fixos e variáveis.
+3. Defina um valor mínimo de caixa.
+
+EFICIÊNCIA:
+
+1. Identifique a atividade que mais consome tempo.
+2. Meça o tempo gasto.
+3. Simplifique, delegue ou automatize.
+
+GESTÃO:
+
+1. Escolha três números importantes.
+2. Defina uma meta.
+3. Acompanhe semanalmente.
+
+==================================================
+IMPORTANTE
+==================================================
+
+NÃO tente gerar APK nesta etapa.
+
+NÃO tente criar Android nesta etapa.
+
+NÃO use serviços pagos.
+
+NÃO instale dependências desnecessárias.
+
+Construa primeiro o PHARBEACON funcionando no navegador.
+
+Depois execute:
+
+- typecheck;
+- build;
+- teste da aplicação.
+
+Corrija qualquer erro encontrado.
+
+Ao terminar, NÃO apenas explique o que deveria ser feito.
+
+Mostre o resultado funcional no preview.
+
+Depois me informe:
+
+1. telas criadas;
+2. funcionalidades implementadas;
+3. motor implementado;
+4. testes realizados;
+5. existência de erros;
+6. próximo passo recomendado.
+
+COMECE AGORA.

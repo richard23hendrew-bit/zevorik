@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "PHARBEACON"
+description = "Uma ferramenta web de diagnóstico empresarial para pequenos empresários. Guia o usuário por 16 perguntas simples e transforma as respostas em uma visão prática, visual e acionável da empresa."
+version = "1.0.0"
+id = "artifacts/pharbeacon"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21241
+
+[services.development]
+run = "pnpm --filter @workspace/pharbeacon run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/pharbeacon", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/pharbeacon/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21241"
+BASE_PATH = "/"
