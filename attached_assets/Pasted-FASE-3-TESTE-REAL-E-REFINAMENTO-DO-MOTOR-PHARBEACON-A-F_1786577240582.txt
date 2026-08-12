@@ -1,0 +1,318 @@
+FASE 3 — TESTE REAL E REFINAMENTO DO MOTOR PHARBEACON
+
+A FASE 2 foi concluída com sucesso.
+
+NÃO alterar a identidade visual neste momento.
+NÃO criar APK.
+NÃO criar Android.
+NÃO adicionar serviços pagos.
+
+Agora quero validar a inteligência do motor de diagnóstico com cenários reais.
+
+==================================================
+OBJETIVO
+==================================================
+
+Verificar se o PHARBEACON está interpretando corretamente diferentes combinações de respostas.
+
+O motor não deve apenas aplicar uma regra isolada.
+
+Ele deve cruzar os sinais encontrados e determinar quais problemas realmente merecem prioridade.
+
+A experiência final para o usuário deve continuar simples.
+
+O algoritmo permanece invisível.
+
+==================================================
+CENÁRIO REAL 1
+==================================================
+
+Usar exatamente estas respostas:
+
+Q1:
+Cabelo
+
+Q2:
+Menos de 1 ano
+
+Q3:
+2 a 5
+
+Q4:
+Até R$10 mil
+
+Q5:
+Às vezes
+
+Q6:
+Tenho uma ideia
+
+Q7:
+Muito maiores
+
+Q8:
+Estáveis
+
+Q9:
+Indicação
+
+Q10:
+Talvez
+
+Q11:
+Falta de cliente
+
+Q12:
+Sim
+
+Q13:
+Não sei dizer
+
+Q14:
+Algumas
+
+Q15:
+Todo mês
+
+Q16:
+Custos
+
+==================================================
+ANÁLISE ESPERADA
+==================================================
+
+O motor deve identificar sinais principalmente relacionados a:
+
+CLIENTES
+
+CUSTOS
+
+FINANCEIRO
+
+EFICIÊNCIA
+
+GESTÃO
+
+A combinação:
+
+Q11 = falta de cliente
+
++
+
+Q9 = indicação
+
++
+
+Q10 = talvez
+
+deve aumentar a relevância de CLIENTES.
+
+A combinação:
+
+Q7 = custos muito maiores
+
++
+
+Q16 = custos
+
+deve aumentar significativamente a relevância de CUSTOS.
+
+A combinação:
+
+Q5 = às vezes
+
++
+
+Q6 = tenho uma ideia
+
+deve indicar atenção/alerta financeiro.
+
+O sistema deve cruzar essas informações.
+
+==================================================
+IMPORTANTE
+==================================================
+
+Não quero que o sistema mostre simplesmente a regra correspondente a uma pergunta.
+
+Quero convergência.
+
+Exemplo:
+
+Se o empresário mencionar espontaneamente "custos" e também informar que os custos aumentaram muito, CUSTOS deve ganhar relevância.
+
+Se o empresário mencionar "falta de cliente" e indicar dependência de indicação, CLIENTES deve ganhar relevância.
+
+Se várias respostas apontarem para o mesmo problema, isso deve pesar mais.
+
+==================================================
+RESULTADO DO TESTE
+==================================================
+
+Depois de executar o cenário, me informe no painel de desenvolvimento:
+
+1. Quais foram as 3 prioridades encontradas.
+2. Qual foi a área/tópico de cada prioridade.
+3. Quais respostas contribuíram para cada prioridade.
+4. Quais pontos fortes foram encontrados.
+5. Quais próximos passos foram escolhidos.
+
+NÃO mostrar score ao usuário final.
+
+NÃO alterar a interface pública para mostrar cálculos.
+
+==================================================
+SEGUNDO TESTE
+==================================================
+
+Criar um cenário de empresa saudável:
+
+Q5:
+Sim, e sobra
+
+Q6:
+Sim
+
+Q7:
+Menores
+
+Q8:
+Crescendo
+
+Q10:
+Sim
+
+Q12:
+Não
+
+Q14:
+Sim
+
+Q15:
+Toda semana
+
+Resultado esperado:
+
+Predominância de sinais positivos.
+
+O sistema NÃO deve inventar problemas críticos.
+
+==================================================
+TERCEIRO TESTE
+==================================================
+
+Criar um cenário de empresa com problemas financeiros:
+
+Q5:
+Não
+
+Q6:
+Não
+
+Q7:
+Muito maiores
+
+Q8:
+Caindo
+
+Q13:
+As despesas estão muito altas
+
+Q16:
+Preciso controlar os custos
+
+Q14:
+Não
+
+Q15:
+Nunca
+
+Resultado esperado:
+
+FINANCEIRO/CUSTOS deve aparecer entre as prioridades mais importantes.
+
+VENDAS também pode aparecer devido às vendas caindo.
+
+==================================================
+QUARTO TESTE
+==================================================
+
+Criar um cenário de empresa com problema de clientes:
+
+Q8:
+Estáveis
+
+Q9:
+Indicação
+
+Q10:
+Talvez
+
+Q11:
+Tenho poucos clientes
+
+Q16:
+Preciso conseguir mais clientes
+
+Resultado esperado:
+
+CLIENTES deve aparecer como uma das principais prioridades.
+
+==================================================
+QUINTO TESTE
+==================================================
+
+Depois dos testes:
+
+verifique se o motor está produzindo resultados coerentes.
+
+Se encontrar inconsistências:
+
+CORRIJA O MOTOR.
+
+Não altere a interface sem necessidade.
+
+Não simplifique o motor apenas para passar nos testes.
+
+O objetivo é tornar o diagnóstico mais coerente.
+
+==================================================
+VALIDAÇÃO FINAL
+==================================================
+
+Depois das correções:
+
+executar novamente:
+
+typecheck
+
+build
+
+testes
+
+preview.
+
+Confirmar que:
+
+- não existem erros;
+- o questionário continua funcionando;
+- o resultado continua funcionando;
+- as perguntas abertas continuam funcionando;
+- o motor continua funcionando;
+- a interface não foi quebrada.
+
+Ao finalizar, informe:
+
+MOTOR VALIDADO
+
+ou
+
+MOTOR PRECISA DE AJUSTES
+
+e explique exatamente o que foi alterado.
+
+AINDA NÃO CRIAR APK.
+
+AINDA NÃO TRANSFORMAR EM PWA.
+
+Primeiro vamos garantir que o cérebro do PHARBEACON esteja correto.
