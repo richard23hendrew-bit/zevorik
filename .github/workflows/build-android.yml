@@ -26,6 +26,8 @@ jobs:
           java-version: 17
 
       - name: Instalar pnpm
+      env:
+    PORT: 4173
         uses: pnpm/action-setup@v4
         with:
           version: 9
