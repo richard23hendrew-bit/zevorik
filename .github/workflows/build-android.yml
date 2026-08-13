@@ -1,0 +1,88 @@
+name: Build PHARBEACON Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código do PHARBEACON
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Instalar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Instalar dependências
+        run: pnpm install --frozen-lockfile
+
+      - name: Compilar PHARBEACON
+        run: pnpm run build
+
+      - name: Instalar Capacitor
+        run: |
+          pnpm add -D @capacitor/cli
+          pnpm add @capacitor/core @capacitor/android
+
+      - name: Detectar diretório de build
+        run: |
+          if [ -d "dist" ]; then
+            echo "WEB_DIR=dist" >> "$GITHUB_ENV"
+          elif [ -d "build" ]; then
+            echo "WEB_DIR=build" >> "$GITHUB_ENV"
+          else
+            echo "ERRO: não encontrei o diretório dist nem build"
+            exit 1
+          fi
+
+      - name: Criar configuração Capacitor
+        run: |
+          cat > capacitor.config.ts <<EOF
+          import type { CapacitorConfig } from '@capacitor/cli';
+
+          const config: CapacitorConfig = {
+            appId: 'com.pharbeacon.app',
+            appName: 'PHARBEACON',
+            webDir: '${WEB_DIR}',
+            bundledWebRuntime: false
+          };
+
+          export default config;
+          EOF
+
+      - name: Adicionar plataforma Android
+        run: pnpm exec cap add android
+
+      - name: Copiar aplicação para Android
+        run: pnpm exec cap copy android
+
+      - name: Sincronizar Capacitor
+        run: pnpm exec cap sync android
+
+      - name: Gerar APK
+        working-directory: android
+        run: ./gradlew assembleDebug
+
+      - name: Disponibilizar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: PHARBEACON-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 7
