@@ -26,8 +26,6 @@ jobs:
           java-version: 17
 
       - name: Instalar pnpm
-      env:
-    PORT: 4173
         uses: pnpm/action-setup@v4
         with:
           version: 9
@@ -36,6 +34,8 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Compilar PHARBEACON
+        env:
+          PORT: 4173
         run: pnpm run build
 
       - name: Instalar Capacitor
