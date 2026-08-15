@@ -1,0 +1,251 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(cuid())
+  name            String
+  phone           String   @unique
+  email           String   @unique
+  password        String
+  pin             String
+  balance         Float    @default(0)
+  avatar          String?
+  role            String   @default("investor")
+  kycStatus       String   @default("pending") // pending, verified, rejected
+  emailVerified   Boolean  @default(false)
+  totalDeposit    Float    @default(0)
+  totalTrading    Float    @default(0)
+  bankName        String?
+  bankAccount     String?
+  bankHolder      String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  otps            OTP[]
+
+  deposits         Deposit[]
+  withdrawals      Withdrawal[]
+  watchlist        Watchlist[]
+  notifications    Notification[]
+  kycRecords       KYC[]
+  predictionTrades PredictionTrade[]
+  portfolios       Portfolio[]
+  transactions     Transaction[]
+}
+
+model Stock {
+  id            String   @id @default(cuid())
+  code          String   @unique
+  name          String
+  price         Float
+  change        Float    @default(0)
+  changePercent Float    @default(0)
+  high          Float    @default(0)
+  low           Float    @default(0)
+  open          Float    @default(0)
+  volume        Int      @default(0)
+  marketCap     Float    @default(0)
+  category      String   @default("bluechip")
+  sector        String?
+  logo          String?
+  description   String?
+  peRatio       Float    @default(0)
+  pbv           Float    @default(0)
+  dividendYield Float    @default(0)
+  lotSize       Int      @default(100)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  watchlist      Watchlist[]
+  portfolios     Portfolio[]
+  transactions   Transaction[]
+}
+
+model StockPriceHistory {
+  id        String   @id @default(cuid())
+  stockCode String
+  price     Float
+  open      Float    @default(0)
+  high      Float    @default(0)
+  low       Float    @default(0)
+  volume    Int      @default(0)
+  timestamp DateTime @default(now())
+}
+
+model Deposit {
+  id             String   @id @default(cuid())
+  userId         String
+  amount         Float
+  method         String   @default("bank_transfer") // bank_transfer, e_wallet, qris, crypto
+  bankName       String?
+  status         String   @default("pending") // pending, completed, rejected
+  note           String?
+  // Crypto deposit fields
+  cryptoAmount   Float    @default(0)
+  cryptoCoin     String?  // USDT, BTC, ETH, etc.
+  cryptoNetwork  String?  // TRC20, BEP20, ERC20, etc.
+  cryptoAddress  String?  // Deposit address
+  cryptoTxId     String?  // Blockchain transaction ID
+  cryptoRate     Float    @default(0) // IDR/USDT rate at time of deposit
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Withdrawal {
+  id          String   @id @default(cuid())
+  userId      String
+  amount      Float
+  bankName    String?
+  bankAccount String?
+  bankHolder  String?
+  status      String   @default("pending") // pending, processing, completed, rejected
+  note        String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Watchlist {
+  id        String   @id @default(cuid())
+  userId    String
+  stockId   String
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id])
+  stock Stock @relation(fields: [stockId], references: [id])
+
+  @@unique([userId, stockId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  message   String
+  type      String   @default("info") // info, trade, deposit, system, alert
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model MarketIndex {
+  id            String   @id @default(cuid())
+  code          String   @unique
+  name          String
+  value         Float
+  change        Float    @default(0)
+  changePercent Float    @default(0)
+  updatedAt     DateTime @updatedAt
+}
+
+model KYC {
+  id              String   @id @default(cuid())
+  userId          String
+  fullName        String
+  idNumber        String
+  address         String
+  occupation      String
+  incomeRange     String
+  ktpImage        String?
+  selfieImage     String?
+  bankStatement   String?
+  additionalDoc   String?
+  status          String   @default("pending") // pending, verified, rejected
+  rejectReason    String?
+  reviewedAt      DateTime?
+  createdAt       DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model PredictionTrade {
+  id            String   @id @default(cuid())
+  userId        String
+  stockCode     String
+  stockName     String
+  direction     String   // UP or DOWN
+  amount        Float
+  duration      Int
+  profitPercent Float
+  startPrice    Float
+  endPrice      Float    @default(0)
+  status        String   @default("active") // active, won, lost
+  isAuto        Boolean  @default(false)
+  profit        Float    @default(0)
+  startedAt     DateTime @default(now())
+  completedAt   DateTime?
+  createdAt     DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Banner {
+  id        String   @id @default(cuid())
+  title     String
+  imageUrl  String
+  link      String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model AdminSetting {
+  id    String @id @default(cuid())
+  key   String @unique
+  value String
+}
+
+model OTP {
+  id        String   @id @default(cuid())
+  email     String
+  code      String
+  type      String   // register, withdrawal, forgot_password
+  verified  Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+  userId    String?
+}
+
+model Portfolio {
+  id        String   @id @default(cuid())
+  userId    String
+  stockId   String
+  shares    Int      @default(0)
+  avgPrice  Float    @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user  User  @relation(fields: [userId], references: [id])
+  stock Stock @relation(fields: [stockId], references: [id])
+
+  @@unique([userId, stockId])
+}
+
+model Transaction {
+  id        String   @id @default(cuid())
+  userId    String
+  stockId   String
+  type      String   // BUY or SELL
+  orderType String   @default("market") // market, limit
+  shares    Int
+  price     Float
+  total     Float
+  fee       Float    @default(0)
+  status    String   @default("completed") // completed, pending, cancelled
+  createdAt DateTime @default(now())
+
+  user  User  @relation(fields: [userId], references: [id])
+  stock Stock @relation(fields: [stockId], references: [id])
+}
